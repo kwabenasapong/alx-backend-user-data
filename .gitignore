@@ -1,0 +1,7 @@
+# for all python related files
+/__pycache__
+*.pyc
+0x01-Basic_authentication/SimpleAPI/api/.DS_Store
+0x01-Basic_authentication/SimpleAPI/api/v1/.DS_Store
+0x01-Basic_authentication/SimpleAPI/api/v1/views/.DS_Store
+0x01-Basic_authentication/SimpleAPI/models/.DS_Store
