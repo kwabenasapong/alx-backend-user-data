@@ -5,3 +5,12 @@
 0x01-Basic_authentication/api/v1/.DS_Store
 0x01-Basic_authentication/api/v1/views/.DS_Store
 0x01-Basic_authentication/models/.DS_Store
+0x02-Session_authentication/main_0.py
+0x01-Basic_authentication/.db_User.json
+
+0x02-Session_authentication/api/.DS_Store
+.gitignore
+0x02-Session_authentication/api/v1/.DS_Store
+0x02-Session_authentication/.db_User.json
+0x02-Session_authentication/api/v1/views/.DS_Store
+0x02-Session_authentication/models/.DS_Store
