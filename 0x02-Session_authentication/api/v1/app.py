@@ -28,7 +28,6 @@ def before_request_func() -> str:
     """
     if auth is None:
         return
-    request.current_user = auth.current_user(request)
     excluded_paths = ['/api/v1/status/',
                       '/api/v1/unauthorized/',
                       '/api/v1/forbidden/']
@@ -37,6 +36,7 @@ def before_request_func() -> str:
             abort(401)
         if auth.current_user(request) is None:
             abort(403)
+    request.current_user = auth.current_user(request)
 
 
 @app.errorhandler(404)
