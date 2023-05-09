@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Create a new model UserSession in models/user_session.py that inherits from Base:
-
-Implement the def __init__(self, *args: list, **kwargs: dict): like in User but for these 2 attributes:
-user_id: string
-session_id: string
+UserSession module
 """
 
 from models.base import Base

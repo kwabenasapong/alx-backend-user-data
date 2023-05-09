@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Create a new authentication class SessionDBAuth in api/v1/auth/session_db_auth.py that inherits from SessionExpAuth:
-
-Overload def create_session(self, user_id=None): that creates and stores new instance of UserSession and returns the Session ID
-Overload def user_id_for_session_id(self, session_id=None): that returns the User ID by requesting UserSession in the database based on session_id
-Overload def destroy_session(self, request=None): that destroys the UserSession based on the Session ID from the request cookie
+SessionDBAuth module
 """
 
 from api.v1.auth.session_exp_auth import SessionExpAuth
