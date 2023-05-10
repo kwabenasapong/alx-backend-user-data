@@ -14,6 +14,7 @@ from db import DB
 from user import User
 from sqlalchemy.orm.exc import NoResultFound
 from uuid import uuid4
+from bcrypt import checkpw
 
 
 def _hash_password(password: str) -> str:
@@ -38,3 +39,11 @@ class Auth:
             return self._db.add_user(email, _hash_password(password))
         else:
             raise ValueError('User {} already exists'.format(email))
+
+    def valid_login(self, email: str, password: str) -> bool:
+        """Validate login"""
+        try:
+            user = self._db.find_user_by(email=email)
+        except NoResultFound:
+            return False
+        return checkpw(password.encode('utf-8'), user.hashed_password)
