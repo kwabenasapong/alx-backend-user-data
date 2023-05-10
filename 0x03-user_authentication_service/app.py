@@ -9,8 +9,8 @@ and use flask.jsonify to return a JSON payload of the form:
 
 from flask import Flask, jsonify, request, abort, redirect
 from auth import Auth
-from flask_cors import (CORS, cross_origin)
-from os import getenv
+# from flask_cors import (CORS, cross_origin)
+# from os import getenv
 
 
 app = Flask(__name__)
@@ -46,13 +46,18 @@ def login() -> str:
     """
     email = request.form.get('email')
     password = request.form.get('password')
+    if email is None or email == "":
+        abort(401)
+    if password is None or password == "":
+        abort(401)
     try:
-        check_user = auth.valid_login(email, password)
-        user = auth.register_user(email, password)
-        session_id = auth.create_session(email)
-        return jsonify({"email": user.email, "message": "logged in"})
+        auth.valid_login(email, password)
     except Exception:
         abort(401)
+    session_id = auth.create_session(email)
+    response = jsonify({"email": email, "message": "logged in"})
+    response.set_cookie("session_id", session_id)
+    return response
 
 
 if __name__ == "__main__":
