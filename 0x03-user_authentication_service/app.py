@@ -9,8 +9,6 @@ and use flask.jsonify to return a JSON payload of the form:
 
 from flask import Flask, jsonify, request, abort, redirect
 from auth import Auth
-# from flask_cors import (CORS, cross_origin)
-# from os import getenv
 
 
 app = Flask(__name__)
