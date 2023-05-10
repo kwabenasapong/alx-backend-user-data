@@ -15,7 +15,7 @@ from auth import Auth
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+# app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 # CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 auth = Auth()
 
