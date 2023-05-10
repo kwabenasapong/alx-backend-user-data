@@ -22,6 +22,7 @@ def _hash_password(password: str) -> str:
     """
     return hashpw(password.encode('utf-8'), gensalt())
 
+
 def _generate_uuid() -> str:
     """Generate UUID
     """
@@ -52,3 +53,13 @@ class Auth:
         except NoResultFound:
             return False
         return checkpw(password.encode('utf-8'), user.hashed_password)
+
+    def create_session(self, email: str):
+        """Creates a session and returns session ID"""
+        try:
+            user = self._db.find_user_by(email=email)
+        except NoResultFound:
+            return None
+        else:
+            user.session_id = _generate_uuid()
+            return user.session_id
