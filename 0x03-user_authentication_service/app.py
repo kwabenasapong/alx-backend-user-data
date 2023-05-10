@@ -57,7 +57,6 @@ def login() -> str:
         return response
     else:
         abort(401)
-    
 
 
 if __name__ == "__main__":
