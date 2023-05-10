@@ -63,3 +63,13 @@ class Auth:
         else:
             user.session_id = _generate_uuid()
             return user.session_id
+
+    def destroy_session(self, user_id: int):
+        """Destroys a session based on User ID"""
+        try:
+            user = self._db.find_user_by(id=user_id)
+        except NoResultFound:
+            return None
+        else:
+            user.session_id = None
+            return None
