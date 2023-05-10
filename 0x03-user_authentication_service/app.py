@@ -15,8 +15,6 @@ from auth import Auth
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-# app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
-# CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 auth = Auth()
 
 
@@ -46,14 +44,14 @@ def login() -> str:
     """
     email = request.form.get('email')
     password = request.form.get('password')
-    # if email is None or email == "":
-    #     abort(401)
-    # if password is None or password == "":
-    #     abort(401)
+    if email is None or email == "":
+        abort(401)
+    if password is None or password == "":
+        abort(401)
     if auth.valid_login(email, password):
         session_id = auth.create_session(email)
-        response = jsonify({"email": f"{email}", "message": "logged in"})
-        response.set_cookie("session_id", session_id)
+        response = jsonify({"email": email, "message": "logged in"})
+        response.set_cookie('session_id', session_id)
         return response
     else:
         abort(401)
