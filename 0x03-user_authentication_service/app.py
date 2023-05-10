@@ -48,13 +48,12 @@ def login() -> str:
         abort(401)
     if password is None or password == "":
         abort(401)
-    if auth.valid_login(email, password):
-        session_id = auth.create_session(email)
-        response = jsonify({"email": email, "message": "logged in"})
-        response.set_cookie('session_id', session_id)
-        return response
-    else:
+    if not auth.valid_login(email, password):
         abort(401)
+    session_id = auth.create_session(email)
+    response = jsonify({"email": email, "message": "logged in"})
+    response.set_cookie('session_id', session_id)
+    return response
 
 
 if __name__ == "__main__":
