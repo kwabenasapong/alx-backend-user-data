@@ -46,10 +46,10 @@ def login() -> str:
     """
     email = request.form.get('email')
     password = request.form.get('password')
-    if email is None or email == "":
-        abort(401)
-    if password is None or password == "":
-        abort(401)
+    # if email is None or email == "":
+    #     abort(401)
+    # if password is None or password == "":
+    #     abort(401)
     if auth.valid_login(email, password):
         session_id = auth.create_session(email)
         response = jsonify({"email": email, "message": "logged in"})
