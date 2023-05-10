@@ -41,13 +41,11 @@ def users() -> str:
 @app.route('/sessions', methods=['POST'])
 def login() -> str:
     """User Login
+    Returns:
+        str: [JSON payload]
     """
     email = request.form.get('email')
     password = request.form.get('password')
-    if email is None or email == "":
-        abort(401)
-    if password is None or password == "":
-        abort(401)
     if not auth.valid_login(email, password):
         abort(401)
     session_id = auth.create_session(email)
